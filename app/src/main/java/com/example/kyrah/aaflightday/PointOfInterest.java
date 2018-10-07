@@ -7,10 +7,10 @@ public class PointOfInterest {
     String name;
     Integer waitTime;
     List<Gate> nearestGates;
-    EnumClasses type;
+    String type;
     //List<Product> products;
 
-    public void PointOfInterest(String name, EnumClasses type) {
+    public PointOfInterest(String name, String type) {
         this.name = name;
         this.type = type;
     }
@@ -27,7 +27,7 @@ public class PointOfInterest {
         System.out.println();
     }
 
-    public void setType(EnumClasses type) { this.type = type; }
+    public void setType(String type) { this.type = type; }
 
     public String getName() { return name; }
 

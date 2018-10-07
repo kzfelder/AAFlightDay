@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class EnumClasses {
     Random rand = new Random();
+
     enum Alphabet {
         a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z;
 
@@ -25,12 +26,28 @@ public class EnumClasses {
     }
 
     enum POITypes {
-        Restaurant, Store, Restroom
+        Restaurant, Store, Restroom;
+
+        private static final List<POITypes> POITypeList =
+                Collections.unmodifiableList(Arrays.asList(values()));
     }
 
-    /*public String randomPOIType() {
-        return POITypes.valueOf(rand.nextInt(3)).toString();
-    }*/
+    public String randomPOIType() {
+        return POITypes.POITypeList.get(rand.nextInt(3)).toString();
+    }
+
+    public String randomPOINameFromType(String type) {
+        switch (type){
+            case "Restaurant":
+                return randomRestaurant();
+            case "Restroom":
+                return randomRestroom();
+            case "Store":
+                return randomStore();
+                default:
+                    return "Placeholder";
+        }
+    }
 
     enum Restaurant {
         Popeyes, ChickFilA, BurgerKing, Chipotle, FiveGuys, Starbucks;
@@ -47,4 +64,25 @@ public class EnumClasses {
         return indexToRestaurant(rand.nextInt(Restaurant.RestaurantList.size())).toString();
     }
 
+    enum Restroom {
+        MaleRestroom, FemaleRestroom;
+
+        private static final List<Restroom> RestroomList =
+                Collections.unmodifiableList(Arrays.asList(values()));
+    }
+
+    public String randomRestroom(){
+        return indexToRestaurant(rand.nextInt(Restroom.RestroomList.size())).toString();
+    }
+
+    enum Store {
+        TechStop, Bookstore, NewsStand, Grocery;
+
+        private static final List<Store> StoreList =
+                Collections.unmodifiableList(Arrays.asList(values()));
+    }
+
+    public String randomStore(){
+        return indexToRestaurant(rand.nextInt(Restroom.RestroomList.size())).toString();
+    }
 }

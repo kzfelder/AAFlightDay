@@ -14,6 +14,8 @@ public class Terminal {
         return this.gates;
     }
 
+    public List<PointOfInterest> getPoiInfo() {return  this.poiList; }
+
     public void addGates(Gate... gates) {
         for (Gate gate : gates) {
             this.gates.add(gate);
@@ -49,10 +51,13 @@ public class Terminal {
 
     public void generateRandomPOIs() {
         List<PointOfInterest> poiList = new ArrayList<>();
-        EnumClasses restaurant = new EnumClasses();
+        EnumClasses POIType = new EnumClasses();
         int numPOI = rand.nextInt(5);
         for (int i = 0; i < numPOI; i++) {
-
+            String type = POIType.randomPOIType();
+            String name = POIType.randomPOINameFromType(type);
+            PointOfInterest newPOI = new PointOfInterest(name, type);
+            poiList.add(newPOI);
         }
 
     }

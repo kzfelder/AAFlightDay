@@ -53,4 +53,5 @@ public class MainActivity extends AppCompatActivity {
 // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
+
 }
