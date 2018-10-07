@@ -18,6 +18,7 @@ public class Flight {
     String destination;
     Integer aircraftType;
     Boolean flightStatus;
+    Airport destinationAirport = new Airport(destination);
 
 
 
@@ -125,7 +126,7 @@ public class Flight {
     }
 
     public List<PointOfInterest> findLocalPOIs() {
-        return Airport.getTerminal(this.gate.getConcourseLabel()).getPOIList;
+        return destinationAirport.getTerminal(this.gate.getConcourseLabel()).getPoiList();
     }
 
     @Override
