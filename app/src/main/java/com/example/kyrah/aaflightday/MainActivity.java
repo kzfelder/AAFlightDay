@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getFlightData(){
-        final TextView mTextView = (TextView) findViewById(R.id.testTV);
         String url = "https://xuwcd.herokuapp.com/reservation?recordLocator=NIGRWW";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -34,12 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        try {
-                            Log.e("KSWAGTHAGOAT", "onResponse: " + response.get("_id"));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        mTextView.setText("Response: " + response);
+                            new Reservation().setReservation(response);
                     }
                 }, new Response.ErrorListener() {
 
