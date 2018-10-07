@@ -10,7 +10,7 @@ import android.widget.Scroller;
 import android.widget.TextClock;
 import android.widget.TextView;
 
-public class OldMain2Activity extends AppCompatActivity {
+public class ResponseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
