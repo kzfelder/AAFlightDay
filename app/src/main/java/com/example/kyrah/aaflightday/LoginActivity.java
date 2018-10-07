@@ -2,8 +2,6 @@ package com.example.kyrah.aaflightday;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,32 +37,37 @@ public class LoginActivity extends AppCompatActivity {
         thisLayout.addView(picture);
         ImageView logo = new ImageView(this);
         logo.setImageResource(R.drawable.logo);
-        logo.setY(1000);
+        logo.setY(1300);
+        logo.setX(60);
         thisLayout.addView(logo);
         TextView welcome = new TextView(this);
-        welcome.setText("Welcome to the American Airlines Flight Day Manager.");
+        welcome.setText("Welcome to the American Airlines Flight Day Manager");
         welcome.setTextSize(36);
-        welcome.setY(300);
-        welcome.setX(50);
+        welcome.setY(190);
+        welcome.setX(375);
+        welcome.setWidth(850);
+        welcome.setTextAlignment(View.TEXT_DIRECTION_FIRST_STRONG_RTL);
+        welcome.setTypeface(Typeface.SANS_SERIF);
         welcome.setTextColor(-65550);
         thisLayout.addView(welcome);
         TextView command = new TextView(this);
         command.setText("Please enter your flight confirmation number:");
-        command.setY(1100);
-        command.setX(10);
-        command.setTextSize(20);
+        command.setY(1000);
+        command.setX(100);
+        command.setTextSize(18);
         command.setTextColor(-65550);
+        command.setTypeface(Typeface.SANS_SERIF);
         command.setTypeface(Typeface.DEFAULT_BOLD);
         thisLayout.addView(command);
         confirm = new EditText(this);
         confirm.setHint("Confirmation #");
         confirm.setY(1200);
-        confirm.setX(400);
-        confirm.setTextSize(25);
+        confirm.setX(500);
+        confirm.setTextSize(20);
         thisLayout.addView(confirm);
         final Button next = new Button(this);
-        next.setY(1500);
-        next.setX(500);
+        next.setY(1450);
+        next.setX(600);
         next.setText("Login");
         next.setEnabled(false);
         next.setOnClickListener(new View.OnClickListener() {
