@@ -29,4 +29,51 @@ class Product {
         glutenFree = true;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public Boolean getVegan() {
+        return vegan;
+    }
+
+    public Boolean getKosher() {
+        return kosher;
+    }
+
+    public Boolean getGlutenFree() {
+        return glutenFree;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setVegan(Boolean vegan) {
+        this.vegan = vegan;
+    }
+
+    public void setKosher(Boolean kosher) {
+        this.kosher = kosher;
+    }
+
+    public void setGlutenFree(Boolean glutenFree) {
+        this.glutenFree = glutenFree;
+    }
 }
