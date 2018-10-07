@@ -72,7 +72,7 @@ public class ResponseActivity extends AppCompatActivity {
     }
 
     public void getFlightData(String conf){
-        final TextView tv = findViewById(R.id.testTV);
+        //final TextView tv = findViewById(R.id.testTV);
         String url = "https://xuwcd.herokuapp.com/reservation?recordLocator=" + conf;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
