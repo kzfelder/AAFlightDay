@@ -8,14 +8,26 @@ public class Terminal {
 
     Random rand = new Random();
     Integer name = rand.nextInt(16) +1;
-    List<Gate> gates = new ArrayList<Gate>();
-    List<PointOfInterest> poiList = new ArrayList<PointOfInterest>();
+    List<Gate> gates;
+    List<PointOfInterest> poiList;
+
+    public Terminal(Integer nm){
+        name = nm;
+        gates = new ArrayList<Gate>();
+        generateRandomGates();
+        poiList = new ArrayList<PointOfInterest>();
+        generateRandomPOIs();
+    }
 
     public String getGatesInfo() {
         return this.gates.toString();
     }
 
     public String  getPoiInfo() {return  this.poiList.toString(); }
+
+    public List<PointOfInterest> getPoiList(){
+        return poiList;
+    }
 
     public void addGates(Gate... gates) {
         for (Gate gate : gates) {

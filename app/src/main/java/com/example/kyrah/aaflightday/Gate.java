@@ -19,6 +19,10 @@ public class Gate {
         return concourse;
     }
 
+    public Integer getTerminal(){
+        return terminal;
+    }
+
     @Override
     public String toString() {
         return terminal.toString() + concourse;
