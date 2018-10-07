@@ -1,5 +1,6 @@
 package com.example.kyrah.aaflightday;
 
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -29,22 +30,27 @@ public class ResponseActivity extends AppCompatActivity {
         TextView sorry = new TextView(this);
         sorry.setText("Sorry; this is not a valid confirmation number.");
         sorry.setTextSize(20);
+        sorry.setY(500);
+        sorry.setX(20);
         thisLayout.addView(sorry);
         TextView help = new TextView(this);
         help.setText("Call 800-433-7300 for assistance.");
-        help.setY(500);
-        help.setX(350);
+        help.setY(1000);
+        help.setX(250);
+        help.setTextSize(18);
         thisLayout.addView(help);
         setContentView(thisLayout);
     }
 
     public void buildGUI2(){
         RelativeLayout trueLayout = new RelativeLayout(this);
+        trueLayout.setBackground(getDrawable(R.drawable.login_backg));
         ScrollView scroll = new ScrollView(this);
         trueLayout.addView(scroll);
         TextView timeHeading = new TextView(this);
         timeHeading.setText("Time until your next flight:");
         timeHeading.setTextSize(20);
+        timeHeading.setTypeface(Typeface.DEFAULT_BOLD);
         trueLayout.addView(timeHeading);
         setContentView(trueLayout);
     }

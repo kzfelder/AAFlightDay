@@ -1,5 +1,6 @@
 package com.example.kyrah.aaflightday;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings({"ALL", "unused"})
@@ -42,6 +43,7 @@ public class PointOfInterest {
         return products;
     }
     */
+
 
     @Override
     public String toString() {
