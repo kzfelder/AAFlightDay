@@ -31,6 +31,7 @@ public class POIList extends ListActivity{
         ArrayAdapter<PointOfInterest> adapter = new ArrayAdapter<PointOfInterest>
                 (this, R.layout.poilist);
         setListAdapter(adapter);
+        adapter.addAll(places);
     }
 
 
