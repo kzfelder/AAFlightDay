@@ -11,6 +11,13 @@ import android.widget.Scroller;
 import android.widget.TextClock;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
 public class ResponseActivity extends AppCompatActivity {
 
     @Override
@@ -21,6 +28,7 @@ public class ResponseActivity extends AppCompatActivity {
             buildGUI();
         }
         else{
+            getFlightData(confirmation);
             buildGUI2();
         }
     }
@@ -51,14 +59,38 @@ public class ResponseActivity extends AppCompatActivity {
         timeHeading.setText("Time until your next flight:");
         timeHeading.setTextSize(20);
         timeHeading.setTypeface(Typeface.DEFAULT_BOLD);
+        timeHeading.setTypeface(Typeface.SANS_SERIF);
         trueLayout.addView(timeHeading);
         setContentView(trueLayout);
     }
 
     public boolean validConfirmation(String conf){
-        if(conf.contains("a")){ //This condition is a placeholder.
+        if(conf.contains("NIGRWW")){ //This condition is a placeholder.
             return true;
         }
         return false;
+    }
+
+    public void getFlightData(String conf){
+        final TextView tv = findViewById(R.id.testTV);
+        String url = "https://xuwcd.herokuapp.com/reservation?recordLocator=" + conf;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        new Reservation().setReservation(response);
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+
+                    }
+                });
+
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 }

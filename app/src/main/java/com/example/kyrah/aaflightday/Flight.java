@@ -1,5 +1,7 @@
 package com.example.kyrah.aaflightday;
 
+import java.util.List;
+
 /**
  * Created by TheGoodElf on 10/7/18.
  */
@@ -16,6 +18,7 @@ public class Flight {
     String destination;
     Integer aircraftType;
     Boolean flightStatus;
+    Airport destinationAirport = new Airport(destination);
 
 
 
@@ -120,6 +123,10 @@ public class Flight {
 
     public void setFlightStatus(Boolean flightStatus) {
         this.flightStatus = flightStatus;
+    }
+
+    public List<PointOfInterest> findLocalPOIs() {
+        return destinationAirport.getTerminal(this.gate.getConcourseLabel()).getPoiList();
     }
 
     @Override

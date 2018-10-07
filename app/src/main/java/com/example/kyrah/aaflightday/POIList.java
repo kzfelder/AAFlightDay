@@ -2,12 +2,14 @@ package com.example.kyrah.aaflightday;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by TheGoodElf on 10/7/18.
@@ -15,8 +17,9 @@ import java.util.ArrayList;
 
 public class POIList extends ListActivity{
 
-    ArrayList<PointOfInterest> places;
+    List<PointOfInterest> places;
     OnPOISelectedListener listener;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +28,9 @@ public class POIList extends ListActivity{
         /*An activity with access to the gate needs to do the putExtra method (using Intent)
         to send the gate here. An example of this can be seen in the Login and Response Activities.
          */
-        String gate = getIntent().getStringExtra("gate");
+        String term = getIntent().getStringExtra("terminal");
         places = new ArrayList<>();
+        places = (new Terminal(term).getPoiList());
         //Still need to give that ArrayList some values. Use the gate to get the nearby POIs.
         ArrayAdapter<PointOfInterest> adapter = new ArrayAdapter<PointOfInterest>
                 (this, R.layout.poilist);

@@ -7,15 +7,28 @@ import java.util.Random;
 public class Terminal {
 
     Random rand = new Random();
-    Integer name = rand.nextInt(16) +1;
-    List<Gate> gates = new ArrayList<Gate>();
-    List<PointOfInterest> poiList = new ArrayList<PointOfInterest>();
+    EnumClasses alphabet = new EnumClasses();
+    String terminalName = alphabet.getLetterAtIndex(rand.nextInt(16) +1).toString();
+    List<Gate> gates;
+    List<PointOfInterest> poiList;
+
+    public Terminal(String nm){
+        terminalName = nm;
+        gates = new ArrayList<Gate>();
+        generateRandomGates();
+        poiList = new ArrayList<PointOfInterest>();
+        generateRandomPOIs();
+    }
 
     public String getGatesInfo() {
         return this.gates.toString();
     }
 
     public String  getPoiInfo() {return  this.poiList.toString(); }
+
+    public List<PointOfInterest> getPoiList(){
+        return poiList;
+    }
 
     public void addGates(Gate... gates) {
         for (Gate gate : gates) {
@@ -42,8 +55,8 @@ public class Terminal {
         EnumClasses letters = new EnumClasses();
         int numGates = rand.nextInt(10) +1;
         for (int i = 0; i < numGates; i++) {
-            Gate newGate = new Gate(letters.getLetterAtIndex(i));
-            newGate.setTerminal(this.name);
+            Gate newGate = new Gate(i);
+            newGate.setConcourse(this.terminalName);
             gates.add(newGate);
         }
 
