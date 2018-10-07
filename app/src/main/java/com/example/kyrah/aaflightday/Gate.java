@@ -2,30 +2,30 @@ package com.example.kyrah.aaflightday;
 
 public class Gate {
     String concourse;
-    Integer terminal;
+    Integer gateNumber;
 
     //Flight awaitingFlight;
     //Flight nextFlight;
 
-    public Gate(String concourse /*Terminal terminal*/) {
+    public Gate(Integer gateNumber) {
+        this.gateNumber = gateNumber;
+    }
+
+    public void setConcourse(String concourse) {
         this.concourse = concourse;
     }
 
-    public void setTerminal(Integer terminal) {
-        this.terminal = terminal;
-    }
-
-    private String getConcourse() {
+    public String getConcourseLabel() {
         return concourse;
-    }
-
-    public Integer getTerminal(){
-        return terminal;
     }
 
     @Override
     public String toString() {
-        return terminal.toString() + concourse;
+        return concourse.toString() + gateNumber;
+    }
+
+    public Integer getGateNumber() {
+        return this.gateNumber;
     }
 }
 
