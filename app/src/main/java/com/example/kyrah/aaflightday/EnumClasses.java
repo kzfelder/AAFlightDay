@@ -9,7 +9,7 @@ public class EnumClasses {
     Random rand = new Random();
 
     enum Alphabet {
-        a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z;
+        a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;
 
         private static final List<Alphabet> AlphabetList =
                 Collections.unmodifiableList(Arrays.asList(values()));
@@ -20,9 +20,8 @@ public class EnumClasses {
         return Alphabet.AlphabetList.get(index);
     }
 
-    public char getLetterAtIndex(int index) {
-        String letter = Alphabet.AlphabetList.get(index).toString();
-        return letter.charAt(0);
+    public String getLetterAtIndex(int index) {
+        return indexToLetter(index).name();
     }
 
     enum POITypes {
@@ -37,16 +36,10 @@ public class EnumClasses {
     }
 
     public String randomPOINameFromType(String type) {
-        switch (type){
-            case "Restaurant":
-                return randomRestaurant();
-            case "Restroom":
-                return randomRestroom();
-            case "Store":
-                return randomStore();
-                default:
-                    return "Placeholder";
-        }
+        if (type.equals("Restaurant")) { return randomRestaurant(); }
+        else if (type.equals("Restroom")) { return randomRestroom(); }
+        else if (type.equals("Store")) { return randomStore(); }
+        else { return "Placeholder"; }
     }
 
     enum Restaurant {
@@ -71,8 +64,10 @@ public class EnumClasses {
                 Collections.unmodifiableList(Arrays.asList(values()));
     }
 
+    private Restroom indexToRestroom(int index) { return Restroom.RestroomList.get(index); }
+
     public String randomRestroom(){
-        return indexToRestaurant(rand.nextInt(Restroom.RestroomList.size())).toString();
+        return indexToRestroom(rand.nextInt(Restroom.RestroomList.size())).toString();
     }
 
     enum Store {
@@ -82,7 +77,9 @@ public class EnumClasses {
                 Collections.unmodifiableList(Arrays.asList(values()));
     }
 
+    private Store indexToStore(int index) { return Store.StoreList.get(index); }
+
     public String randomStore(){
-        return indexToRestaurant(rand.nextInt(Restroom.RestroomList.size())).toString();
+        return indexToStore(rand.nextInt(Store.StoreList.size())).toString();
     }
 }

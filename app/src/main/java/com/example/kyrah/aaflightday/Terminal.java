@@ -7,14 +7,15 @@ import java.util.Random;
 public class Terminal {
 
     Random rand = new Random();
-    List<Gate> gates;
-    List<PointOfInterest> poiList;
+    Integer name = rand.nextInt(16) +1;
+    List<Gate> gates = new ArrayList<Gate>();
+    List<PointOfInterest> poiList = new ArrayList<PointOfInterest>();
 
-    public List<Gate> getGatesInfo() {
-        return this.gates;
+    public String getGatesInfo() {
+        return this.gates.toString();
     }
 
-    public List<PointOfInterest> getPoiInfo() {return  this.poiList; }
+    public String  getPoiInfo() {return  this.poiList.toString(); }
 
     public void addGates(Gate... gates) {
         for (Gate gate : gates) {
@@ -37,12 +38,16 @@ public class Terminal {
     }
 
     public void generateRandomGates() {
-        List<Gate> gates = new ArrayList<>();
+        List<Gate> gates = new ArrayList();
         EnumClasses letters = new EnumClasses();
-        int numGates = rand.nextInt(10);
+        int numGates = rand.nextInt(10) +1;
         for (int i = 0; i < numGates; i++) {
-            gates.add(new Gate(letters.getLetterAtIndex(i)));
+            Gate newGate = new Gate(letters.getLetterAtIndex(i));
+            newGate.setTerminal(this.name);
+            gates.add(newGate);
         }
+
+        this.gates = gates;
     }
 
     public void setGates(List<Gate> gates) {
@@ -50,15 +55,17 @@ public class Terminal {
     }
 
     public void generateRandomPOIs() {
-        List<PointOfInterest> poiList = new ArrayList<>();
+        List<PointOfInterest> poiList = new ArrayList();
         EnumClasses POIType = new EnumClasses();
-        int numPOI = rand.nextInt(5);
+        int numPOI = rand.nextInt(5) +1;
         for (int i = 0; i < numPOI; i++) {
             String type = POIType.randomPOIType();
             String name = POIType.randomPOINameFromType(type);
             PointOfInterest newPOI = new PointOfInterest(name, type);
+            newPOI.setWaitTime(rand.nextInt(30) +1);
             poiList.add(newPOI);
         }
 
+        this.poiList = poiList;
     }
 }

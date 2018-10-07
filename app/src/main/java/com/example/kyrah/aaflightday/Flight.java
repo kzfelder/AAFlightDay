@@ -16,7 +16,7 @@ public class Flight {
     String destination;
     Integer aircraftType;
     Boolean flightStatus;
-    
+
 
 
     public void Flight(Gate gate, String departuretdate, String departuretime, String arrivaldate, String arrivaltime, Integer price, Integer flightNumber, String origin, String destination, Integer aircraftType, Boolean flightStatus){
