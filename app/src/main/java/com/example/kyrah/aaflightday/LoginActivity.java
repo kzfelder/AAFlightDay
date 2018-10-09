@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 intent = new Intent();
-                intent.setClass(LoginActivity.this, ResponseActivity.class);
+                intent.setClass(LoginActivity.this, MainActivity.class);
                 intent.putExtra("confirmation", confirmation);
                 startActivity(intent);
                 }
