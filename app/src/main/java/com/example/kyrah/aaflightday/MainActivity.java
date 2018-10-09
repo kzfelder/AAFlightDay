@@ -3,6 +3,8 @@ package com.example.kyrah.aaflightday;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -19,6 +21,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button poiBtn = findViewById(R.id.poiButton);
+        poiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.activity_poi);
+            }
+        });
         String confirmation = getIntent().getStringExtra("confirmation");
         if(!validConfirmation(confirmation)){
         }
